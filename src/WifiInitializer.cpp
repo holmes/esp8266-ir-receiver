@@ -1,11 +1,33 @@
 #include <Arduino.h>
 #include <functional>
 
+// Needed for library.
+#include <ESP8266WiFi.h>
+#include <DNSServer.h>
+#include <ESP8266WebServer.h>
+#include <WiFiManager.h>
+
 class WifiInitializer {
 
 public:
   void setup() {
     Serial.println("Initializing Wifi!");
+
+    WiFiManager wifiManager;
+
+    char mySSID[17];
+    char myPASS[7];
+    sprintf(mySSID,"IRRECVR-00%06X", ESP.getChipId());
+    sprintf(myPASS,"00%06X", ESP.getChipId());
+    if (!wifiManager.autoConnect(mySSID, myPASS)) {
+      Serial.println("*IR: failed to connect and hit timeout");
+      delay(3000);
+      ESP.reset();
+      delay(5000);
+    }
+
+    Serial.print("Connected with IP: ");
+    Serial.print(WiFi.localIP());
   }
 
   void connect(std::function<void(bool)> wifiInitialized) {
