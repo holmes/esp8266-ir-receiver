@@ -14,8 +14,9 @@ void setup() {
   MQTTHandlerFactory mqttFactory = MQTTHandlerFactory();
 
   Bootstrap bs = Bootstrap(messageBroker, messageRecevier, wifiInitializer, mqttFactory);
-  bs.setup();
   bootstrap = &bs;
+
+  bootstrap->setup();
 }
 
 void loop() {
