@@ -10,7 +10,10 @@ void setup() {
   IRMessageBroker messageBroker = IRMessageBroker();
   IRMessageReceiver messageRecevier = IRMessageReceiver(messageBroker, irrecv);
 
-  Bootstrap bs = Bootstrap(messageBroker, messageRecevier);
+  WifiInitializer wifiInitializer = WifiInitializer();
+  MQTTHandlerFactory mqttFactory = MQTTHandlerFactory();
+
+  Bootstrap bs = Bootstrap(messageBroker, messageRecevier, wifiInitializer, mqttFactory);
   bs.setup();
   bootstrap = &bs;
 }

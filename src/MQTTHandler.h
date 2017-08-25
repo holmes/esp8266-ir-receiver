@@ -9,4 +9,13 @@ public:
   void irCommandReceived();
 };
 
+struct MQTTConfig {
+
+};
+
+class MQTTHandlerFactory {
+public:
+  MQTTHandler build(MQTTConfig config);
+};
+
 #endif

@@ -1,6 +1,5 @@
 #include <Arduino.h>
-
-#import "MQTTHandler.h"
+#include "MQTTHandler.h"
 
 void MQTTHandler::setup() {
   Serial.println("Initializing MQTTHandler");
@@ -8,4 +7,8 @@ void MQTTHandler::setup() {
 
 void MQTTHandler::irCommandReceived() {
   // Pass it on!
+}
+
+MQTTHandler MQTTHandlerFactory::build(MQTTConfig config) {
+  return MQTTHandler();
 }

@@ -6,8 +6,10 @@
 
 class Bootstrap {
 public:
-  explicit Bootstrap(const IRMessageBroker &messageBroker, const IRMessageReceiver &receiver)
-  : irMessageBroker(messageBroker), irMessageReceiver(receiver) {
+  explicit Bootstrap(const IRMessageBroker &messageBroker, const IRMessageReceiver &receiver,
+    const WifiInitializer &wifiInitializer,  const MQTTHandlerFactory mqttFactory)
+  : irMessageBroker(messageBroker), irMessageReceiver(receiver),
+  wifiInitializer(wifiInitializer), mqttFactory(mqttFactory) {
     // Initialized!
   }
 
@@ -25,6 +27,8 @@ public:
   }
 
   void setupMQTT(bool wifiInitialized) {
+    MQTTConfig config;
+    MQTTHandler mqttHandler = mqttFactory.build(config);
     mqttHandler.setup();
   }
 
@@ -36,5 +40,5 @@ private:
   WifiInitializer wifiInitializer;
   IRMessageBroker irMessageBroker;
   IRMessageReceiver irMessageReceiver;
-  MQTTHandler mqttHandler;
+  MQTTHandlerFactory mqttFactory;
 };
