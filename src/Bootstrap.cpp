@@ -2,7 +2,7 @@
 #include "WifiInitializer.cpp"
 #include "IRMessageReceiver.h"
 #include "IRMessageBroker.h"
-#include "MQTTHandler.cpp"
+#include "MQTTHandler.h"
 
 class Bootstrap {
 public:
