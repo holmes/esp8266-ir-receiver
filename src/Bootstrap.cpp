@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "WifiInitializer.cpp"
+#include "WifiInitializer.h"
 #include "IRMessageReceiver.h"
 #include "IRMessageBroker.h"
 #include "MQTTHandler.h"
