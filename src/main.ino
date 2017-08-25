@@ -1,13 +1,20 @@
 #include <Arduino.h>
 #include "Bootstrap.cpp"
 
-Bootstrap bootstrap;
+Bootstrap *bootstrap;
 
 void setup() {
   Serial.begin(115200);
-  bootstrap.setup();
+
+  IRrecv irrecv = IRrecv(14);
+  IRMessageBroker messageBroker = IRMessageBroker();
+  IRMessageReceiver messageRecevier = IRMessageReceiver(messageBroker, irrecv);
+
+  Bootstrap bs = Bootstrap(messageBroker, messageRecevier);
+  bs.setup();
+  bootstrap = &bs;
 }
 
 void loop() {
-  // Nothing to loop!
+  bootstrap->loop();
 }
