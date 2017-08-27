@@ -18,6 +18,8 @@ void IRMessageReceiver::setup() {
 }
 
 void IRMessageReceiver::loop() {
+  decode_results results;
+  
   if (irrecv.decode(&results)) {
     // print() & println() can't handle printing long longs. (uint64_t)
     serialPrintUint64(results.value, HEX);

@@ -14,7 +14,6 @@ public:
 private:
   const IRMessageBroker irMessageBroker;
   IRrecv irrecv;
-  decode_results results;
 };
 
 #endif

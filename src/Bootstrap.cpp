@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include <IRrecv.h>
+
 #include "WifiInitializer.h"
 #include "IRMessageReceiver.h"
 #include "IRMessageBroker.h"

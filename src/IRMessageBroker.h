@@ -2,6 +2,7 @@
 #define IRMessageBroker_H
 
 #include <list>
+#include <IRrecv.h>
 
 class IRMessageBroker {
 public:
