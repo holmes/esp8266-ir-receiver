@@ -5,7 +5,7 @@ void MQTTHandler::setup() {
   Serial.println("Initializing MQTTHandler");
 }
 
-void MQTTHandler::irCommandReceived() {
+void MQTTHandler::irCommandReceived(int i) {
   // Pass it on!
 }
 

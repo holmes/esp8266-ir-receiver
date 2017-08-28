@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "Bootstrap.cpp"
+#include "Bootstrap.h"
 
 Bootstrap *bootstrap;
 

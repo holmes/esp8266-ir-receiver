@@ -6,7 +6,7 @@
 class MQTTHandler {
 public:
   void setup();
-  void irCommandReceived();
+  void irCommandReceived(int i);
 };
 
 struct MQTTConfig {

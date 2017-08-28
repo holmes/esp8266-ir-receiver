@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <functional>
 #include <list>
 
 #include "IRMessageBroker.h"
@@ -7,7 +8,7 @@ void IRMessageBroker::setup() {
   Serial.println("Intiailzing IRMessageBroker");
 }
 
-void IRMessageBroker::registerHandler() {
+void IRMessageBroker::registerHandler(IRMessageReceivedCallback handler) {
   Serial.println("Added listener");
   l.push_back(1);
   Serial.printf("new size is %d\n", l.size());
