@@ -3,10 +3,13 @@
 
 #include <functional>
 
+// Callback function when a IR message is received.
+typedef std::function<void(bool)> WifiInitializedCallback;
+
 class WifiInitializer {
 public:
   void setup();
-  void connect(std::function<void(bool)> wifiInitialized);
+  void connect(WifiInitializedCallback wifiInitialized);
 };
 
 #endif

@@ -12,8 +12,6 @@ void IRMessageBroker::registerHandler(IRMessageReceivedCallback handler) {
   Serial.println("Added listener");
   l.push_back(1);
   Serial.printf("new size is %d\n", l.size());
-  l.push_back(1);
-  Serial.printf("new size is %d\n", l.size());
 }
 
 void IRMessageBroker::commandReceived() {

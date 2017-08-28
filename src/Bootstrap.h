@@ -18,7 +18,7 @@ public:
   void setup();
   void setupMQTT(bool wifiInitialized);
   void loop();
-  int logDecodeResults(int i);
+  void logDecodeResults(int i);
 
 private:
   WifiInitializer wifiInitializer;

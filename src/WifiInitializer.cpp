@@ -29,7 +29,7 @@ void WifiInitializer::setup() {
   Serial.print(WiFi.localIP());
 }
 
-void WifiInitializer::connect(std::function<void(bool)> wifiInitialized) {
+void WifiInitializer::connect(WifiInitializedCallback wifiInitialized) {
   Serial.println("Wifi initialized, hitting callback");
   wifiInitialized(true);
 }

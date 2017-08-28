@@ -10,17 +10,13 @@ wifiInitializer(wifiInitializer), mqttFactory(mqttFactory) {
 void Bootstrap::setup() {
   Serial.println("\n\nBootstrap starting");
 
+  using namespace std::placeholders;
   irMessageBroker.setup();
-  // irMessageBroker.registerHandler(
-  //   [&this](int i) { return this->logDecodeResults(i); });
-
-  // caller.connectCallback(
-  // [&callee](int i) { return callee.callbackFunction(i); });
+  irMessageBroker.registerHandler(std::bind(&Bootstrap::logDecodeResults, this, _1));
 
   irMessageReceiver.setup();
-  wifiInitializer.setup();
 
-  using namespace std::placeholders; // for `_1`
+  wifiInitializer.setup();
   wifiInitializer.connect(std::bind(&Bootstrap::setupMQTT, this, _1));
 }
 
@@ -29,14 +25,14 @@ void Bootstrap::setupMQTT(bool wifiInitialized) {
   MQTTHandler mqttHandler = mqttFactory.build(config);
   mqttHandler.setup();
 
-  irMessageBroker.registerHandler(
-    [&mqttHandler](int i) { return mqttHandler.irCommandReceived(i); });
+  using namespace std::placeholders;
+  irMessageBroker.registerHandler(std::bind(&MQTTHandler::irCommandReceived, mqttHandler, _1));
 }
 
 void Bootstrap::loop() {
   irMessageReceiver.loop();
 }
 
-int Bootstrap::logDecodeResults(int i) {
+void Bootstrap::logDecodeResults(int i) {
   Serial.print("got something!");
 }
