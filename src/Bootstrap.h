@@ -16,7 +16,7 @@ public:
     const WifiInitializer &wifiInitializer,  const MQTTHandlerFactory mqttFactory);
 
   void setup();
-  void setupMQTT(bool wifiInitialized);
+  void setupMQTT(MQTTConfig mqttConfig);
   void loop();
   void logDecodeResults(int i);
 

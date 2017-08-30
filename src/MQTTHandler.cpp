@@ -10,5 +10,7 @@ void MQTTHandler::irCommandReceived(int i) {
 }
 
 MQTTHandler MQTTHandlerFactory::build(MQTTConfig config) {
+  Serial.print("MQTT Configured: ");
+  Serial.println(config.mqtt_server);
   return MQTTHandler();
 }

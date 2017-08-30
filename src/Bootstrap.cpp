@@ -20,7 +20,7 @@ void Bootstrap::setup() {
   wifiInitializer.connect(std::bind(&Bootstrap::setupMQTT, this, _1));
 }
 
-void Bootstrap::setupMQTT(bool wifiInitialized) {
+void Bootstrap::setupMQTT(MQTTConfig mqttConfig) {
   MQTTConfig config;
   MQTTHandler mqttHandler = mqttFactory.build(config);
   mqttHandler.setup();
