@@ -38,14 +38,14 @@ void WifiInitializer::setup() {
         json.printTo(Serial);
 
         if (json.success()) {
-          Serial.println("Parsed mqttConfig.json");
+          Serial.println("\nParsed mqttConfig.json");
           strcpy(config.mqtt_server, json["mqtt_server"]);
           strcpy(config.mqtt_port, json["mqtt_port"]);
           strcpy(config.mqtt_user, json["mqtt_user"]);
           strcpy(config.mqtt_pass, json["mqtt_pass"]);
           strcpy(config.mqtt_topic, json["mqtt_topic"]);
         } else {
-          Serial.println("Failed to load mqttConfig.json");
+          Serial.println("\nFailed to load mqttConfig.json");
           shouldResetSettings = true;
         }
       } else {

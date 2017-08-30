@@ -21,8 +21,7 @@ void Bootstrap::setup() {
 }
 
 void Bootstrap::setupMQTT(MQTTConfig mqttConfig) {
-  MQTTConfig config;
-  MQTTHandler mqttHandler = mqttFactory.build(config);
+  MQTTHandler mqttHandler = mqttFactory.build(mqttConfig);
   mqttHandler.setup();
 
   using namespace std::placeholders;
@@ -31,6 +30,7 @@ void Bootstrap::setupMQTT(MQTTConfig mqttConfig) {
 
 void Bootstrap::loop() {
   irMessageReceiver.loop();
+  // mqttHandler.loop();
 }
 
 void Bootstrap::logDecodeResults(int i) {
