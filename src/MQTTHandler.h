@@ -10,16 +10,11 @@
 class MQTTHandler {
 public:
   explicit MQTTHandler(const PubSubClient &pubSubClient);
-  void setup();
+  void setup(MQTTConfig config);
   void loop();
   void irCommandReceived(int i);
 private:
   PubSubClient client;
-};
-
-class MQTTHandlerFactory {
-public:
-  MQTTHandler build(MQTTConfig config);
 };
 
 #endif

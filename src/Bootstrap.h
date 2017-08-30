@@ -2,8 +2,6 @@
 #define Bootstrap_H
 
 #include <Arduino.h>
-#include <functional>
-#include <IRrecv.h>
 
 #include "WifiInitializer.h"
 #include "IRMessageReceiver.h"
@@ -13,7 +11,7 @@
 class Bootstrap {
 public:
   explicit Bootstrap(const IRMessageBroker &messageBroker, const IRMessageReceiver &receiver,
-    const WifiInitializer &wifiInitializer,  const MQTTHandlerFactory mqttFactory);
+    const WifiInitializer &wifiInitializer,  const MQTTHandler mqttHandler);
 
   void setup();
   void setupMQTT(MQTTConfig mqttConfig);
@@ -24,7 +22,7 @@ private:
   WifiInitializer wifiInitializer;
   IRMessageBroker irMessageBroker;
   IRMessageReceiver irMessageReceiver;
-  MQTTHandlerFactory mqttFactory;
+  MQTTHandler mqttHandler;
 };
 
 #endif

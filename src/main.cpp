@@ -11,9 +11,12 @@ void setup() {
   IRMessageReceiver messageRecevier = IRMessageReceiver(messageBroker, irrecv);
 
   WifiInitializer wifiInitializer = WifiInitializer();
-  MQTTHandlerFactory mqttFactory = MQTTHandlerFactory();
 
-  Bootstrap bs = Bootstrap(messageBroker, messageRecevier, wifiInitializer, mqttFactory);
+  WiFiClient espClient;
+  PubSubClient client(espClient);
+  MQTTHandler mqttHandler = MQTTHandler(client);
+
+  Bootstrap bs = Bootstrap(messageBroker, messageRecevier, wifiInitializer, mqttHandler);
   bootstrap = &bs;
 
   bootstrap->setup();
