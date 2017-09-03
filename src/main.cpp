@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "Bootstrap.h"
 
+WiFiClient espClient;
 Bootstrap *bootstrap;
 
 void setup() {
@@ -12,7 +13,6 @@ void setup() {
 
   WifiInitializer wifiInitializer = WifiInitializer();
 
-  WiFiClient espClient;
   PubSubClient client(espClient);
   MQTTHandler mqttHandler = MQTTHandler(client);
 
