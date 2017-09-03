@@ -5,13 +5,13 @@
 
 #include "WifiInitializer.h"
 #include "IRMessageReceiver.h"
-#include "IRMessageBroker.h"
 #include "MQTTHandler.h"
 
 class Bootstrap {
 public:
-  explicit Bootstrap(const IRMessageBroker &messageBroker, const IRMessageReceiver &receiver,
-    const WifiInitializer &wifiInitializer,  const MQTTHandler mqttHandler);
+  explicit Bootstrap(const IRMessageReceiver &receiver,
+    const WifiInitializer &wifiInitializer,
+    const MQTTHandler mqttHandler);
 
   void setup();
   void setupMQTT(MQTTConfig mqttConfig);
@@ -20,7 +20,6 @@ public:
 
 private:
   WifiInitializer wifiInitializer;
-  IRMessageBroker irMessageBroker;
   IRMessageReceiver irMessageReceiver;
   MQTTHandler mqttHandler;
 };
